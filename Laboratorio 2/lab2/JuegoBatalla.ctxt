@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=JuegoBatalla
-comment1.params=robotsParticipantes
-comment1.target=JuegoBatalla(java.lang.String[])
-comment2.params=
-comment2.target=void\ inicializarRobots()
+comment1.params=
+comment1.target=void\ inicializarRobots()
+comment2.params=robots
+comment2.target=int\ cantidadRobotsVivos(Robot[])
 comment3.params=
 comment3.target=void\ iniciarBatalla()
 comment4.params=

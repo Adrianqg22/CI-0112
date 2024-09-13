@@ -2,39 +2,45 @@ import java.util.Random;
 import java.util.Scanner;
 public class JuegoBatalla{
     //Atributos
-    private Robot [] robots;//Array de objetos `Robot` que contendrá a los robots participantes
-    private Scanner scanner = new Scanner(System.in);
-    private Random random;
+    private static Robot [] robots;//Array de objetos `Robot` que contendrá a los robots participantes
+    private static Scanner scanner = new Scanner(System.in);
+    private static Random random;
     //Metodos
-    public JuegoBatalla(String[] robotsParticipantes) {
-        random = new Random();
-        robots = new Robot[robotsParticipantes.length];
-        for (int i = 0; i < robotsParticipantes.length; i++) {
-            robots[i] = new Robot(robotsParticipantes[i]);
-        }
-    }
-    
-    
-    public void inicializarRobots(){
+    public static void inicializarRobots(){
         System.out.println("¿Cuantos robots desea crear?");
         int cantidadRobots = scanner.nextInt();
-        int[] robotsParticipantes = new int[cantidadRobots];
+        robots = new Robot[cantidadRobots];
         System.out.println("Brinde los datos para la creacion de los robots");
-        for(int i = 0; i < robotsParticipantes.length; i++){
-            System.out.println("Digite el nombre del robot: "+ robotsParticipantes[i]);
-            String nombre
+        for(int i = 0; i < robots.length; i++){
+            System.out.println("Digite el nombre del robot: "+ i + 1);
+            String nombre = scanner.next();
+            System.out.println("Digite los puntos de vida del robot: "+ i + 1);
+            int puntosVida = scanner.nextInt();
+            System.out.println("Digite la cantidad de daño que hara el robot: "+ i + 1);
+            int ataque = scanner.nextInt();
+            robots[i] = new Robot(nombre, puntosVida, ataque);
         }
     }
     
-    public void iniciarBatalla(){
-        int robotsVivos = robots.length;
-        while(robotsVivos > 1){
+    public static int cantidadRobotsVivos(Robot[] robots){
+        int contador = 0;
+        for(int i = 0; i < robots.length; i++){
+            if(robots[i].getPuntosVida()>0){
+                contador++;
+            }
+        }
+        return contador;
+    }
+    
+    public static void iniciarBatalla(){
+        while(cantidadRobotsVivos(robots) > 1){
             //Seleccion robots
             for(int i = 0; i < robots.length; i++){
                 Robot atacante = robots[i];
-                
+                int receptor = random.nextInt(0, robots.length);
+                Robot receptorR = robots[receptor];
+                atacante.atacar(receptorR);
             }
-            
         }
     }
 
@@ -42,6 +48,7 @@ public class JuegoBatalla{
 
     }
     public static void main(String[] args) {
-        
+        inicializarRobots();
+        iniciarBatalla();
     }
 }

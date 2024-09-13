@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Robot
-comment1.params=nombre
-comment1.target=Robot(java.lang.String)
+comment1.params=nombre\ puntosVida\ ataque
+comment1.target=Robot(java.lang.String,\ int,\ int)
 comment2.params=
 comment2.target=java.lang.String\ getNombre()
 comment3.params=

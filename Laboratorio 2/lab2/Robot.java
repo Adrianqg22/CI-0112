@@ -5,7 +5,7 @@ public class Robot{
    private int ataque;
    private Random random;
    
-   public Robot(String nombre){
+   public Robot(String nombre, int puntosVida, int ataque){
        this.nombre = nombre;
        this.random = new Random();
        this.puntosVida = puntosVida; // Vida entre 50 y 100
@@ -24,7 +24,7 @@ public class Robot{
        if(puntosVida >= 50 && puntosVida <= 100){
            this.puntosVida = puntosVida;
        } else{
-           System.out.println("Valor fuera del rango permitido (0 a 50).");
+           System.out.println("Valor fuera del rango permitido (50 a 100).");
        }
    }
    
