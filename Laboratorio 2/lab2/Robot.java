@@ -3,6 +3,7 @@ public class Robot{
    private String nombre;
    private int puntosVida;
    private int ataque;
+   private int defensa;
    private Random random;
    
    public Robot(String nombre, int puntosVida, int ataque){
