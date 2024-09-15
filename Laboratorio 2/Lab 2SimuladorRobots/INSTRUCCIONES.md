@@ -1,3 +1,4 @@
+
 # Instrucciones para Ejecutar el Simulador de Robots
 
 Este archivo proporciona las instrucciones para compilar y ejecutar el simulador de robots desarrollado para el curso de Programación 1.
@@ -39,6 +40,7 @@ Este archivo proporciona las instrucciones para compilar y ejecutar el simulador
    - Ver el estado actual de los robots.
    - Salir del programa.
 
+
 - **`README.md`**: Describe el propósito del repositorio y su contenido.
 - **`Lab 2/INSTRUCCIONES.md`**: Este archivo, con las instrucciones para ejecutar el programa.
 - **`Lab 2/SimuladorRobots/`**: Carpeta que contiene el código fuente del simulador.
@@ -51,3 +53,4 @@ Este archivo proporciona las instrucciones para compilar y ejecutar el simulador
 - Si encuentras problemas durante la compilación o ejecución, revisa los mensajes de error para identificar posibles soluciones.
 
 Para cualquier duda o problema, contacta al instructor del curso o consulta la documentación del proyecto.
+
