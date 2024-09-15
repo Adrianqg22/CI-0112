@@ -42,12 +42,10 @@ public class Robot{
    }
    
    public void atacar(Robot otroRobot){
-        if(ataque >= 10 && ataque <= 20){
-            System.out.println(this.nombre + "ataca a " + otroRobot.getNombre());
-            otroRobot.puntosVida -= this.ataque;
-            if(otroRobot.puntosVida < 0)otroRobot.puntosVida = 0;
-        }
-   }
+        System.out.println(this.nombre + " ataca a " + otroRobot.getNombre());
+        otroRobot.puntosVida -= this.ataque;
+        if(otroRobot.puntosVida < 0)otroRobot.puntosVida = 0;
+               }
    
    public boolean  estaVivo(){
         return this.puntosVida > 0;
