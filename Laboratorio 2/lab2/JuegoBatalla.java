@@ -37,7 +37,18 @@ public class JuegoBatalla{
                 }
             }while(puntosVida <50 || puntosVida > 100);
             
-
+            do{
+                System.out.println("Digite los puntos de defensa del robot: "+ (i + 1));
+                System.out.println("(Debe ser entre 0 y 10)");
+                while(!scanner.hasNextInt()){
+                    System.out.println("Eso no es un número entero. Intente de nuevo: ");
+                    scanner.next();
+                }
+                defensa = scanner.nextInt();
+                if(defensa < 0 || defensa > 10){
+                    System.out.println("Los puntos de defensa del robot deben ser entre 0 y 10. Intente de nuevo.");
+                }
+            }while(defensa <0 || defensa > 10);
             
             do{
                 System.out.println("Digite la cantidad de daño que hara el robot: "+ (i + 1));
@@ -51,7 +62,7 @@ public class JuegoBatalla{
                         System.out.println("La cantidad de daño que hara el robot debe ser un valor entre 10 y 20. Intente de nuevo.");
                     }
             }while(ataque < 10 || ataque > 20);
-            robots[i] = new Robot(nombre, puntosVida,ataque);
+            robots[i] = new Robot(nombre, puntosVida, ataque, defensa);
         }
     }
     
@@ -94,20 +105,25 @@ public class JuegoBatalla{
         System.out.println(mostrarGanador(robots));
     }
     
-    public static void iniciarBatalla( ){     
-        while(cantidadRobotsVivos(robots) > 1){
-            //Seleccion robots
-            for(int i = 0; i < robots.length; i++){
+    public static void iniciarBatalla() {
+        while (cantidadRobotsVivos(robots) > 1) {
+            for (int i = 0; i < robots.length; i++) {
                 Robot atacante = robots[i];
+                
+                if (!atacante.estaVivo()) {
+                    continue; 
+                }
+                
                 int indiceReceptor;
                 do {
                     indiceReceptor = random.nextInt(robots.length);
-                } while(indiceReceptor == i);  // Evita que un robot ataque a sí mismo
+                } while (indiceReceptor == i || !robots[indiceReceptor].estaVivo());
+                
                 Robot receptor = robots[indiceReceptor];
                 atacante.atacar(receptor);
                 controlSimulacion();
                 
-                if(!estadoSimulacion){
+                if (!estadoSimulacion) {
                     return;
                 }
             }
@@ -130,6 +146,7 @@ public class JuegoBatalla{
     public static void mostarEstadoRobots(Robot[] robots){
         for(int i = 0; i < robots.length; i++){
             System.out.println("Los puntos de vida del robot " + robots[i].getNombre() + " es: " + robots[i].getPuntosVida());
+            System.out.println("Los puntos de defensa del robot " + robots[i].getNombre() + " es: " + robots[i].getPuntosDefensa());
         }
     }
     
