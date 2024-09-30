@@ -1,32 +1,39 @@
 
-/**
- * Write a description of class TicTacToe here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class TicTacToe{
-    // instance variables - replace the example below with your own
-    private char [][] tablero;
+        private char[][] panel;
+        private char jugadorAct;
+        private char jugador1;
+        private char jugador2;
+        public prueba(char[][] panel, char jugadorAct){
+            this.panel = new char[3][3];
+            this.jugadorAct;
+        }
+        
+        public void iniciarJuego(){
+            //llena la matriz con guiones para empezar el juego.
+            for (int i = 0; i < panel.length; i++) {
+                    for (int j = 0; j < panel[i].length; j++) {
+                        panel[i][j] = '-';
+                    }
+                }
+            //empieza el que elige la x
+            this.jugadorAct = jugadorAct;
+        }
+        
+        public void imprimir(){
+             for (int i = 0; i < panel.length; i++) {
+                    for (int j = 0; j < panel[i].length; j++) {
+                        System.out.println (panel[i][j]);
+                    }
+                }
+        }
+        
+         public void setPanel(char[][] panel ){
+            this.panel = panel;
+        }   
+        
+         public prueba(char[][] panel){
+            this.panel = panel;
+        }  
 
-    /**
-     * Constructor for objects of class TicTacToe
-     */
-    public TicTacToe()
-    {
-        // initialise instance variables
-        x = 0;
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
-    }
 }
