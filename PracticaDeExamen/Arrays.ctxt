@@ -16,4 +16,6 @@ comment7.params=
 comment7.target=void\ busquedaParesImpares()
 comment8.params=
 comment8.target=void\ restaMayorMenor()
-numComments=9
+comment9.params=
+comment9.target=void\ encontrarDosPeque\u00F1os()
+numComments=10
