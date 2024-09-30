@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=prueba
+comment1.params=filas\ col
+comment1.target=prueba(int,\ int)
+comment2.params=
+comment2.target=void\ llenar()
+comment3.params=
+comment3.target=void\ imprimir()
+comment4.params=panel
+comment4.target=void\ setPanel(char[][])
+comment5.params=panel
+comment5.target=prueba(char[][])
+numComments=6
