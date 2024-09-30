@@ -62,21 +62,19 @@ public class Arrays{
         int contadorPares = 0;
         int contadorImpares = 0;
         for(int i = 0; i < this.array.length; i++){
-            if(array[i] % 3 == 0){
-                contadorImpares++;
-            }else{
+            if(array[i] % 2 == 0){
                 contadorPares++;
+            }else{
+                contadorImpares++;
             }
         }
         System.out.println("La cantidad de numeros pares es: "+ contadorPares + " y la cantidad de impares es: "+ contadorImpares);
     }
     
     public void restaMayorMenor(){
-        int valorA;
-        int valorB;
+        int valorMayor = array [0];
+        int valorMenor = array[0];
         for(int i = 0; i< this.array.length; i++){
-            int valorMenor= array[i];
-            int valorMayor= array[i];
             if(valorMayor < array[i]){
                 valorMayor = array[i];
             }
@@ -84,7 +82,17 @@ public class Arrays{
                 valorMenor = array[i];
             }
         }
-        
-        System.out.println("El resultado del mayor menos el menor es: ");
+        int resta = valorMayor - valorMenor;
+        System.out.println("El resultado del mayor menos el menor es: " + resta );
+    }
+    
+    public void encontrarDosPequeños(){
+        int menor = array[0];
+        int sMenor = array[0];
+        for(int i = 0; i<this.array.length; i++){
+            if(menor < array[i]){
+                
+            }
+        }
     }
 }
