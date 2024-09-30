@@ -5,10 +5,9 @@
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class TicTacToe
-{
+public class TicTacToe{
     // instance variables - replace the example below with your own
-    private int x;
+    private char [][] tablero;
 
     /**
      * Constructor for objects of class TicTacToe
