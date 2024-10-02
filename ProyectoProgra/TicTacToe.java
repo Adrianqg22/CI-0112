@@ -68,7 +68,7 @@ public class TicTacToe{
             tablero[fila][columna] = jugadorActual;
             estadoActual();
             cambiarJugador();
-        }while(!revisarDiagonales());
+        }while(!ganadorJuego());
     }
     
     /**
@@ -79,35 +79,18 @@ public class TicTacToe{
     }
     
     public boolean ganadorJuego(){
-        char ganador = 'a';
+        char ganador = ' ';
         boolean hayGanador = false;
         //Comprueba si hay ganador en las filas
         for(int i = 0; i < this.tablero.length; i++){
-            if(tablero[i][0] == tablero[i][1] && tablero[i][1] == tablero[i][2]){
-                ganador = tablero[i][0];
+            if(revisarFilas() == true || revisarColumnas() == true || revisarDiagonales() == true){
                 hayGanador = true;
-                System.out.println("El ganador es: "+ ganador);
-            }
-                //Comprueba ganador columnas
-            if(tablero[0][i] == tablero[0][i] && tablero[0][i] == tablero[0][i]){
-                ganador = tablero[0][i];
-                hayGanador = true;
-                System.out.println("El ganador es: "+ ganador);
-            }
-                //comprueba ganador diagonal
-            if(tablero[i][i] == tablero[i][i] && tablero[i][i] == tablero[i][i]){
                 ganador = tablero[i][i];
-                hayGanador = true;
-                System.out.println("El ganador es: "+ ganador);
             }
-                //Comprueba la otra diagonal
-            if(tablero[i][i] == tablero[i][i] && tablero[i][i] == tablero[i][i]){
-                ganador = tablero[i][0];
-                hayGanador = true;
-                System.out.println("El ganador es: "+ ganador);
-                }
         }
-        
+        if(hayGanador){
+            System.out.println("El ganador es: "+ ganador);
+        }
         return hayGanador;
     }
     
@@ -122,9 +105,6 @@ public class TicTacToe{
                 i = this.tablero.length;
             }
         }
-        if(hayGanador){
-            System.out.println("El ganador es: "+ ganador);
-        }
         return hayGanador;
     }
     
@@ -138,9 +118,6 @@ public class TicTacToe{
                 hayGanador = true;
                 i = this.tablero.length;
             }
-        }
-        if(hayGanador){
-            System.out.println("El ganador es: "+ ganador);
         }
         return hayGanador;
     }
@@ -159,9 +136,6 @@ public class TicTacToe{
                 hayGanador = true;
                 i = this.tablero.length;
             }
-        }
-        if(hayGanador){
-            System.out.println("El ganador es: "+ ganador);
         }
         return hayGanador;
     }
