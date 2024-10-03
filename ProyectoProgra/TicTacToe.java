@@ -4,7 +4,7 @@ public class TicTacToe{
     //Atributos de la clase
     char [][] tablero;
     char jugadorActual;
-    
+    char ultimoMovimiento;
     /**
      * Constructor que inicializa el tablero y selecciona al primer jugador
      */
@@ -64,11 +64,15 @@ public class TicTacToe{
                 System.out.println("Es el turno de: "+ jugadorActual);
                 fila = scanner.nextInt();
                 columna = scanner.nextInt();
-            } while(fila < 0 || fila > 3 || columna < 0 || columna > 3);
+            } while(fila < 0 || fila > 3 || columna < 0 || columna > 3 || tablero[fila][columna] != '-');
             tablero[fila][columna] = jugadorActual;
             estadoActual();
+            if(esEmpate()){
+               break; 
+            }
             cambiarJugador();
         }while(!ganadorJuego());
+        System.out.println("El ganador es: "+ ultimoMovimiento);
     }
     
     /**
@@ -85,11 +89,8 @@ public class TicTacToe{
         for(int i = 0; i < this.tablero.length; i++){
             if(revisarFilas() == true || revisarColumnas() == true || revisarDiagonales() == true){
                 hayGanador = true;
-                ganador = tablero[i][i];
+                ganador = ultimoMovimiento;
             }
-        }
-        if(hayGanador){
-            System.out.println("El ganador es: "+ ganador);
         }
         return hayGanador;
     }
@@ -100,9 +101,9 @@ public class TicTacToe{
         for(int i = 0; i < this.tablero.length; i++){
             // Comprueba ganador filas
             if(tablero[i][0] == tablero[i][1] && tablero[i][1] == tablero[i][2] && tablero[i][0] != '-'){
-                ganador = tablero[i][0];
+                ultimoMovimiento = tablero[i][0];
                 hayGanador = true;
-                i = this.tablero.length;
+                break;
             }
         }
         return hayGanador;
@@ -114,9 +115,9 @@ public class TicTacToe{
         for(int i = 0; i < this.tablero.length; i++){
             //Comprueba si hay ganador columnas
             if(tablero[0][i] == tablero[1][i] && tablero[1][i] == tablero[2][i] && tablero[0][i] != '-'){
-                ganador = tablero[0][i];
+                ultimoMovimiento = tablero[0][i];
                 hayGanador = true;
-                i = this.tablero.length;
+                break;
             }
         }
         return hayGanador;
@@ -128,16 +129,37 @@ public class TicTacToe{
         for(int i = 0; i < this.tablero.length; i++){
             //Comprueba si hay ganador en las diagonales
             if(tablero[0][0] == tablero[1][1] && tablero[1][1] == tablero[2][2] && tablero[0][0] != '-'){
-                ganador = tablero[0][0];
+                ultimoMovimiento = tablero[0][0];
                 hayGanador = true;
-                i = this.tablero.length;
+                break;
             }else if(tablero[0][2] == tablero[1][1] && tablero[1][1] == tablero[2][0] && tablero[0][2] != '-'){
-                ganador = tablero[0][2];
+                ultimoMovimiento = tablero[0][2];
                 hayGanador = true;
-                i = this.tablero.length;
+                break;
             }
         }
         return hayGanador;
+    }
+    
+    public boolean esEmpate(){
+        boolean empate = false;
+        if(!ganadorJuego() && tableroLleno()){
+            System.out.println("No hay un ganador claro...");
+            empate = true;
+        }
+        return empate;
+    }
+    
+    public boolean tableroLleno(){
+        boolean tableroLLeno = false;
+        for(int i = 0; i < this.tablero.length; i++ ){
+            for(int j = 0; j < this.tablero.length; j++){
+                if(tablero[i][j] == '-'){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
     
     public static void main(String [] args){
