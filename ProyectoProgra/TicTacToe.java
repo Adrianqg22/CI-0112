@@ -13,6 +13,30 @@ public class TicTacToe{
         seleccionarInicial();
     }
     
+    public void setTablero(){
+        this.tablero = tablero;
+    }
+    
+    public char[][] getTablero(){
+        return this.tablero;
+    }
+    
+    public void setJugadorActual(){
+        this.jugadorActual = jugadorActual;
+    }
+    
+    public char getJugadorActual(){
+        return this.jugadorActual;
+    }
+    
+    public void ultimoMovimiento(){
+        this.ultimoMovimiento = ultimoMovimiento;
+    }
+    
+    public char getUltimoMovimiento(){
+        return this.ultimoMovimiento;
+    }
+    
     /**
      * Inicializa el tablero con linea vacias
      */
@@ -71,7 +95,7 @@ public class TicTacToe{
                break; 
             }
             cambiarJugador();
-        }while(!ganadorJuego());
+        }while(!juegoTerminado());
         System.out.println("El ganador es: "+ ultimoMovimiento);
     }
     
@@ -160,6 +184,14 @@ public class TicTacToe{
             }
         }
         return true;
+    }
+    
+    public boolean juegoTerminado(){
+        boolean termino = false;
+        if(ganadorJuego()||esEmpate()){
+            termino = true;
+        }
+        return termino;
     }
     
     public static void main(String [] args){
