@@ -72,19 +72,20 @@ public class Connect4{
     
     public boolean revisarFilas(){
         boolean ganador = false;
-        int contadorConsecutivos = 1;
         for(int i = 1; i < this.tablero.length;i++){
-            if(tablero[i] == tablero[i-1] && tablero[i] != '-'){
-                contadorConsecutivos++;
-                if(contadorConsecutivos == 4){
-                    ganador = true;
-                    break;
+            int contadorConsecutivos = 1;
+            for(int j = 1; j < this.tablero.length;j++){
+                if(tablero[i][j] == tablero[i][j-1] && tablero[i][j]!= '-'){
+                    contadorConsecutivos++;
+                    if(contadorConsecutivos == 4){
+                        ganador = true;
+                        break;
+                    }
                 }
             }
-        }
+        }    
         return ganador;
     }
-    
     public static void main(String [] args){
         Connect4 juego = new Connect4();
         juego.imprimirEstado();
