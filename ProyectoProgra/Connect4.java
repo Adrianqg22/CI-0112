@@ -55,16 +55,13 @@ public class Connect4{
             caidaFicha(columna);
             imprimirEstado();
             cambiarJugador();
-        }while(!revisarFilas());
+        }while(!revisarDiagonalDerecha());
     }
     
     public void caidaFicha(int columna){
         for(int i = this.tablero.length -1; i >= 0; i--){
             if(tablero[i][columna] == '-'){
                 tablero[i][columna] = jugadorActual;
-                break;
-            }else{
-                tablero[i-1][columna] = jugadorActual;
                 break;
             }
         }
@@ -86,6 +83,68 @@ public class Connect4{
         }    
         return ganador;
     }
+    
+    public boolean revisarColumnas(){
+        boolean ganador = false;
+        for(int i = 1; i < this.tablero.length;i++){
+            int contadorConsecutivos = 1;
+            for(int j = 1; j < this.tablero.length;j++){
+                if(tablero[i][j] == tablero[i-1][j] && tablero[i][j]!= '-'){
+                    contadorConsecutivos++;
+                    if(contadorConsecutivos == 4){
+                        ganador = true;
+                        break;
+                    }
+                }
+            }
+        }    
+        return ganador;
+    }
+    
+    public boolean revisarDiagonalIzquierda(){
+        boolean ganador = false;
+        for(int i = 1; i < this.tablero.length;i++){
+            int contadorConsecutivos = 1;
+            for(int j = 1; j < this.tablero.length;j++){
+                if(tablero[i][j] == tablero[i-1][j+1] && tablero[i][j]!= '-'){
+                    contadorConsecutivos++;
+                    if(contadorConsecutivos == 4){
+                        ganador = true;
+                        break;
+                    }
+                }
+            }
+        } 
+        return ganador;
+    }
+    
+    public boolean revisarDiagonalDerecha(){
+        boolean ganador = false;
+        for(int i = 1; i < this.tablero.length;i++){
+            int contadorConsecutivos = 1;
+            for(int j = 1; j < this.tablero.length;j++){
+                if(tablero[i][j] == tablero[i-1][j-1] && tablero[i][j]!= '-'){
+                    contadorConsecutivos++;
+                    if(contadorConsecutivos == 4){
+                        ganador = true;
+                        break;
+                    }
+                }
+            }
+        } 
+        return ganador;
+    }
+    
+    public boolean ganadorJuego(){
+        boolean ganador = false;
+        for(int i = 0; i < this.tablero.length; i++){
+            if(revisarFilas() == true || revisarDiagonalDerecha() == true || revisarDiagonalIzquierda() == true || revisarColumnas()){
+                ganador = true;
+            }
+        }
+        return ganador;
+    }
+    
     public static void main(String [] args){
         Connect4 juego = new Connect4();
         juego.imprimirEstado();
