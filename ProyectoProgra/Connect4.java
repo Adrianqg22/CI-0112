@@ -55,7 +55,7 @@ public class Connect4{
             caidaFicha(columna);
             imprimirEstado();
             cambiarJugador();
-        }while(!revisarDiagonalDerecha());
+        }while(!revisarColumnas());
     }
     
     public void caidaFicha(int columna){
@@ -86,9 +86,9 @@ public class Connect4{
     
     public boolean revisarColumnas(){
         boolean ganador = false;
-        for(int i = 1; i < this.tablero.length;i++){
+        for(int j = 0; j < this.tablero[0].length;j++){
             int contadorConsecutivos = 1;
-            for(int j = 1; j < this.tablero.length;j++){
+            for(int i = 1; i < this.tablero.length;i++){
                 if(tablero[i][j] == tablero[i-1][j] && tablero[i][j]!= '-'){
                     contadorConsecutivos++;
                     if(contadorConsecutivos == 4){
