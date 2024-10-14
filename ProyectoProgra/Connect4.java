@@ -101,20 +101,16 @@ public class Connect4{
         return ganador;
     }
     
-    public boolean revisarDiagonalIzquierda(){
+    public boolean revisarDiagonalIzquierda() {
         boolean ganador = false;
-        for(int i = 1; i < this.tablero.length;i++){
-            int contadorConsecutivos = 1;
-            for(int j = 1; j < this.tablero.length;j++){
-                if(tablero[i][j] == tablero[i-1][j+1] && tablero[i][j]!= '-'){
-                    contadorConsecutivos++;
-                    if(contadorConsecutivos == 4){
-                        ganador = true;
-                        break;
-                    }
+        for (int i = 0; i < this.tablero.length - 3; i++) {
+            for (int j = 0; j < this.tablero[i].length - 3; j++) {
+                if (tablero[i][j] != '-' && tablero[i][j] == tablero[i + 1][j + 1] && tablero[i][j] == tablero[i + 2][j + 2] && tablero[i][j] == tablero[i + 3][j + 3]) {
+                    ganador = true;
+                    break;
                 }
             }
-        } 
+        }
         return ganador;
     }
     
