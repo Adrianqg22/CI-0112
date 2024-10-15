@@ -4,10 +4,34 @@ import java.util.Random;
 public class Connect4{
     private char [][] tablero;
     private char jugadorActual;
-    
+    private char ultimoMovimiento;
     public Connect4(){
         iniciarJuego();
         seleccionarInicial();
+    }
+    
+    public void setTablero(){
+        this.tablero = tablero;
+    }
+    
+    public char[][] getTablero(){
+        return this.tablero;
+    }
+    
+    public void setJugadorActual(){
+        this.jugadorActual = jugadorActual;
+    }
+    
+    public char getJugadorActual(){
+        return this.jugadorActual;
+    }
+    
+    public void ultimoMovimiento(){
+        this.ultimoMovimiento = ultimoMovimiento;
+    }
+    
+    public char getUltimoMovimiento(){
+        return this.ultimoMovimiento;
     }
     
     public void iniciarJuego(){
@@ -56,6 +80,7 @@ public class Connect4{
             imprimirEstado();
             cambiarJugador();
         }while(!ganadorJuego());
+        System.out.println("El ganador es: "+ ultimoMovimiento);
     }
     
     public void caidaFicha(int columna){
@@ -69,6 +94,7 @@ public class Connect4{
     
     public boolean revisarFilas(){
         boolean ganador = false;
+        char nombreGanador = ' ';
         for(int i = 1; i < this.tablero.length;i++){
             int contadorConsecutivos = 1;
             for(int j = 1; j < this.tablero.length;j++){
@@ -76,6 +102,7 @@ public class Connect4{
                     contadorConsecutivos++;
                     if(contadorConsecutivos == 4){
                         ganador = true;
+                        ultimoMovimiento = tablero[i][j];
                         break;
                     }
                 }
@@ -86,6 +113,7 @@ public class Connect4{
     
     public boolean revisarColumnas(){
         boolean ganador = false;
+        char nombreGanador = ' ';
         for(int j = 0; j < this.tablero[0].length;j++){
             int contadorConsecutivos = 1;
             for(int i = 1; i < this.tablero.length;i++){
@@ -93,6 +121,7 @@ public class Connect4{
                     contadorConsecutivos++;
                     if(contadorConsecutivos == 4){
                         ganador = true;
+                        ultimoMovimiento = tablero[i][j];
                         break;
                     }
                 }
@@ -103,10 +132,12 @@ public class Connect4{
     
     public boolean revisarDiagonalIzquierda() {
         boolean ganador = false;
+        char nombreGanador = ' ';
         for (int i = 0; i < this.tablero.length - 3; i++) {
             for (int j = 0; j < this.tablero[i].length - 3; j++) {
                 if (tablero[i][j] != '-' && tablero[i][j] == tablero[i + 1][j + 1] && tablero[i][j] == tablero[i + 2][j + 2] && tablero[i][j] == tablero[i + 3][j + 3]) {
                     ganador = true;
+                    ultimoMovimiento = tablero[i][j];
                     break;
                 }
             }
@@ -119,7 +150,8 @@ public class Connect4{
         for (int i = 0; i < tablero.length - 3; i++) {
             for (int j = 3; j < tablero[i].length; j++) {
                 if (tablero[i][j] != '-' && tablero[i][j] == tablero[i + 1][j - 1] && tablero[i][j] == tablero[i + 2][j - 2] && tablero[i][j] == tablero[i + 3][j - 3]) {
-                    ganador = true;  
+                    ganador = true;
+                    ultimoMovimiento = tablero[i][j];
                     break;
                 }
             }
@@ -129,18 +161,13 @@ public class Connect4{
     
     public boolean ganadorJuego(){
         boolean ganador = false;
+        char ganadorChar = ' ';
         for(int i = 0; i < this.tablero.length; i++){
             if(revisarFilas() == true || revisarDiagonalDerecha() == true || revisarDiagonalIzquierda() == true || revisarColumnas() == true || revisarFilas() == true){
                 ganador = true;
+                ganadorChar = ultimoMovimiento;
             }
         }
-        System.out.println("El juego ha finalizado.");
         return ganador;
-    }
-    
-    public static void main(String [] args){
-        Connect4 juego = new Connect4();
-        juego.imprimirEstado();
-        juego.hacerMovimiento();
     }
 }

@@ -2,9 +2,9 @@ import java.util.Random;
 import java.util.Scanner;
 public class TicTacToe{
     //Atributos de la clase
-    char [][] tablero;
-    char jugadorActual;
-    char ultimoMovimiento;
+    private char [][] tablero;
+    private char jugadorActual;
+    private char ultimoMovimiento;
     /**
      * Constructor que inicializa el tablero y selecciona al primer jugador
      */
@@ -192,11 +192,5 @@ public class TicTacToe{
             termino = true;
         }
         return termino;
-    }
-    
-    public static void main(String [] args){
-        TicTacToe juego = new TicTacToe();
-        juego.iniciarJuego();
-        juego.hacerMovimiento();
     }
 }
