@@ -257,4 +257,10 @@ public class TicTacToe {
         }
         return termino;
     }
+    
+    public void reiniciarJuego() {
+        tablero = new char[3][3];
+        seleccionarInicial();
+        System.out.println("El juego de TicTacToe ha sido reiniciado.");
+    }
 }

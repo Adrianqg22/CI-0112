@@ -9,14 +9,13 @@ import java.util.Scanner;
  */
 public class JuegoControlador {
     /**
-     * @brief Referencia al juego actual que se está jugando.
-     * Puede ser un objeto de tipo TicTacToe o Connect4.
+     * @class JuegoControlador
+     * @brief Controlador para seleccionar y manejar el juego actual.
+     * 
+     * Este controlador maneja explícitamente los juegos TicTacToe y Connect4
      */
-    private Object juegoActual;
-
-    /**
-     * @brief Objeto para leer la entrada del usuario.
-     */
+    private TicTacToe ticTacToe;
+    private Connect4 connect4;
     private Scanner scanner;
 
     /**
@@ -25,7 +24,8 @@ public class JuegoControlador {
      * Inicializa el controlador del juego sin ningún juego seleccionado.
      */
     public JuegoControlador() {
-        this.juegoActual = null;
+        this.ticTacToe = null;
+        this.connect4 = null;
         this.scanner = new Scanner(System.in);
     }
 
@@ -56,12 +56,14 @@ public class JuegoControlador {
 
             switch (seleccion) {
                 case 1:
-                    juegoActual = new TicTacToe();
+                    ticTacToe = new TicTacToe();
+                    connect4 = null;
                     System.out.println("Has seleccionado TicTacToe.");
                     juegoSeleccionado = true;
                     break;
                 case 2:
-                    juegoActual = new Connect4();  // Asegúrate de que esta clase existe
+                    connect4 = new Connect4();
+                    ticTacToe = null;
                     System.out.println("Has seleccionado Conecta 4.");
                     juegoSeleccionado = true;
                     break;
@@ -80,14 +82,17 @@ public class JuegoControlador {
     /**
      * @brief Maneja el flujo del juego actual.
      * 
-     * Dependiendo del juego seleccionado, llama al método hacerMovimiento()
-     * para manejar las jugadas del usuario.
+     * Esta función ejecuta el juego actualmente seleccionado (TicTacToe o Connect4).
      */
     public void jugar() {
-        if (juegoActual instanceof TicTacToe) {
-            ((TicTacToe) juegoActual).hacerMovimiento();
-        } else if (juegoActual instanceof Connect4) {
-            ((Connect4) juegoActual).hacerMovimiento();
+        if (ticTacToe != null) {
+            ticTacToe.hacerMovimiento();
+        } else if (connect4 != null) {
+            connect4.hacerMovimiento();
+        } else {
+            System.out.println("Debes seleccionar un juego primero.");
+            seleccionarJuego();
+            jugar();
         }
     }
 
@@ -97,30 +102,24 @@ public class JuegoControlador {
      * @return true si el usuario desea jugar de nuevo, false en caso contrario.
      */
     public boolean deseaJugarDeNuevo() {
-        System.out.println("¿Desea jugar de nuevo? (1. Sí / 2. No)");
+        System.out.println("¿Desea jugar de nuevo? 1 para sí, cualquier otro número para no.");
         int opcion = scanner.nextInt();
-        return opcion == 1;
-    }
 
-    /**
-     * @brief Procesa la entrada del usuario y ejecuta el juego seleccionado.
-     * 
-     * Si no hay ningún juego seleccionado, solicita al usuario que seleccione uno.
-     * Luego, inicia el flujo del juego y pregunta si desea jugar de nuevo.
-     */
-    public void procesarEntradaUsuario() {
-        while (true) {
-            if (juegoActual == null) {
-                seleccionarJuego();
+        if (opcion == 1) {
+            if (ticTacToe != null) {
+                ticTacToe.reiniciarJuego();  // Reinicia TicTacToe
+                jugar();
+            } else if (connect4 != null) {
+                connect4.reiniciarJuego();   // Reinicia Connect4
+                jugar();
             }
-            jugar();
-            if (!deseaJugarDeNuevo()) {
-                System.out.println("Gracias por jugar.");
-                break;
-            }
-            juegoActual = null; 
+            return true;
+        } else {
+            scanner.close();
+            System.out.println("Gracias por jugar.");
+            System.exit(0);
+            return false;
         }
-        scanner.close(); 
     }
 
     /**
@@ -132,7 +131,12 @@ public class JuegoControlador {
      */
     public static void main(String[] args) {
         JuegoControlador controlador = new JuegoControlador();
-        controlador.procesarEntradaUsuario();
+        controlador.seleccionarJuego();
+        controlador.jugar();
+
+        while (controlador.deseaJugarDeNuevo()) {
+            // El bucle continuará hasta que el usuario decida no jugar más
+        }
     }
 }
 

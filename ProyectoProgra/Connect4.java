@@ -253,4 +253,10 @@ public class Connect4 {
         }
         return ganador;
     }
+    
+    public void reiniciarJuego() {
+        tablero = new char[6][7]; 
+        seleccionarInicial(); 
+        System.out.println("El juego de Conecta 4 ha sido reiniciado.");
+    }
 }
