@@ -132,7 +132,7 @@ public class TicTacToe {
                 System.out.println("Es el turno de: "+ jugadorActual);
                 fila = scanner.nextInt();
                 columna = scanner.nextInt();
-            } while(fila < 0 || fila > 3 || columna < 0 || columna > 3 || tablero[fila][columna] != '-');
+            } while(fila < 0 || fila >= 3 || columna < 0 || columna >= 3 || tablero[fila][columna] != '-');
             tablero[fila][columna] = jugadorActual;
             estadoActual();
             if(esEmpate()){

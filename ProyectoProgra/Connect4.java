@@ -138,7 +138,7 @@ public class Connect4 {
                 System.out.println("Realice el movimiento que desea realizar (columna)");
                 System.out.println("Es el turno de: " + jugadorActual);
                 columna = scanner.nextInt();
-            } while(columna < 0 || columna > 7);
+            } while(columna < 0 || columna >= 7);
             caidaFicha(columna);
             imprimirEstado();
             cambiarJugador();
