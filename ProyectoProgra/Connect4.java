@@ -254,9 +254,18 @@ public class Connect4 {
         return ganador;
     }
     
+    /**
+     * @brief Reinicia el juego de Conecta 4.
+     * 
+     * Este método restablece el tablero a su estado inicial 
+     * (con espacios vacíos), vuelve a seleccionar al jugador 
+     * inicial y muestra un mensaje indicando que el juego ha 
+     * sido reiniciado.
+     */
     public void reiniciarJuego() {
-        tablero = new char[6][7]; 
-        seleccionarInicial(); 
+        tablero = new char[6][7];
+        iniciarJuego();
+        seleccionarInicial();
         System.out.println("El juego de Conecta 4 ha sido reiniciado.");
     }
 }

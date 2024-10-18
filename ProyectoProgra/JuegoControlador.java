@@ -85,15 +85,16 @@ public class JuegoControlador {
      * Esta función ejecuta el juego actualmente seleccionado (TicTacToe o Connect4).
      */
     public void jugar() {
-        if (ticTacToe != null) {
-            ticTacToe.hacerMovimiento();
-        } else if (connect4 != null) {
-            connect4.hacerMovimiento();
-        } else {
-            System.out.println("Debes seleccionar un juego primero.");
-            seleccionarJuego();
-            jugar();
-        }
+        do {
+            if (ticTacToe != null) {
+                ticTacToe.hacerMovimiento();
+            } else if (connect4 != null) {
+                connect4.hacerMovimiento();
+            } else {
+                System.out.println("Debes seleccionar un juego primero.");
+                seleccionarJuego();
+            }
+        } while (deseaJugarDeNuevo());
     }
 
     /**
@@ -107,10 +108,10 @@ public class JuegoControlador {
 
         if (opcion == 1) {
             if (ticTacToe != null) {
-                ticTacToe.reiniciarJuego();  // Reinicia TicTacToe
+                ticTacToe.reiniciarJuego();
                 jugar();
             } else if (connect4 != null) {
-                connect4.reiniciarJuego();   // Reinicia Connect4
+                connect4.reiniciarJuego();
                 jugar();
             }
             return true;
@@ -133,9 +134,8 @@ public class JuegoControlador {
         JuegoControlador controlador = new JuegoControlador();
         controlador.seleccionarJuego();
         controlador.jugar();
-
+        
         while (controlador.deseaJugarDeNuevo()) {
-            // El bucle continuará hasta que el usuario decida no jugar más
         }
     }
 }

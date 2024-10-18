@@ -33,6 +33,7 @@ comment18.target=boolean\ ganadorJuego()
 comment18.text=\r\n\ @brief\ Verifica\ si\ el\ juego\ tiene\ un\ ganador.\r\n\ @return\ true\ si\ hay\ un\ ganador,\ false\ en\ caso\ contrario.\r\n
 comment19.params=
 comment19.target=void\ reiniciarJuego()
+comment19.text=\r\n\ @brief\ Reinicia\ el\ juego\ de\ Conecta\ 4.\r\n\ \r\n\ Este\ m\u00E9todo\ restablece\ el\ tablero\ a\ su\ estado\ inicial\ \r\n\ (con\ espacios\ vac\u00EDos),\ vuelve\ a\ seleccionar\ al\ jugador\ \r\n\ inicial\ y\ muestra\ un\ mensaje\ indicando\ que\ el\ juego\ ha\ \r\n\ sido\ reiniciado.\r\n
 comment2.params=
 comment2.target=void\ setTablero()
 comment2.text=\r\n\ @brief\ Establece\ el\ tablero\ de\ juego.\r\n

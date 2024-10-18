@@ -39,6 +39,7 @@ comment2.target=void\ setTablero()
 comment2.text=\r\n\ @brief\ Establece\ el\ tablero\ de\ juego.\r\n
 comment20.params=
 comment20.target=void\ reiniciarJuego()
+comment20.text=\r\n\ @brief\ Reinicia\ el\ juego\ de\ TicTacToe.\r\n\ \r\n\ Este\ m\u00E9todo\ restablece\ el\ tablero\ a\ su\ estado\ inicial,\ \r\n\ selecciona\ de\ nuevo\ al\ jugador\ inicial\ y\ muestra\ un\ \r\n\ mensaje\ indicando\ que\ el\ juego\ ha\ sido\ reiniciado.\r\n
 comment3.params=
 comment3.target=char[][]\ getTablero()
 comment3.text=\r\n\ @brief\ Devuelve\ el\ tablero\ actual.\r\n\ @return\ Una\ matriz\ de\ caracteres\ que\ representa\ el\ tablero.\r\n

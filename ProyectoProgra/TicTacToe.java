@@ -1,3 +1,7 @@
+/**
+ * @file TicTacToe.java
+ * @brief Implementación del juego TicTacToe.
+ */
 import java.util.Random;
 import java.util.Scanner;
 
@@ -119,6 +123,7 @@ public class TicTacToe {
      */
     public void hacerMovimiento(){
         Scanner scanner = new Scanner(System.in);
+        estadoActual();
         do{
             int fila;
             int columna;
@@ -258,9 +263,17 @@ public class TicTacToe {
         return termino;
     }
     
+    /**
+     * @brief Reinicia el juego de TicTacToe.
+     * 
+     * Este método restablece el tablero a su estado inicial, 
+     * selecciona de nuevo al jugador inicial y muestra un 
+     * mensaje indicando que el juego ha sido reiniciado.
+     */
     public void reiniciarJuego() {
-        tablero = new char[3][3];
-        seleccionarInicial();
+        tablero = new char[3][3]; // Reinicia el tablero
+        iniciarJuego();
+        seleccionarInicial(); // Restablece el jugador actual al inicio
         System.out.println("El juego de TicTacToe ha sido reiniciado.");
     }
 }
