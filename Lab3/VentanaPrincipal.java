@@ -1,5 +1,4 @@
-
-import java.awt.Dimension;
+import java.awt.event.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.*;
@@ -52,12 +51,21 @@ public class VentanaPrincipal extends JFrame {
         JLabel comboBoxLabel = new JLabel("Tipo de usuario: ");
         String[] tiposDeUsuario = {"Cliente", "Empleado", "Administrador"};
         JComboBox<String> tiposDeUsuarioComboBox = new JComboBox<String>(tiposDeUsuario);
-        tiposDeUsuarioComboBox.setPreferredSize(new Dimension(50, 30));
         panelFormulario.add(comboBoxLabel);
         panelFormulario.add(tiposDeUsuarioComboBox);
+
+        JLabel checkboxLabel = new JLabel("Terminos y condiciones:");
+        JCheckBox terms = new JCheckBox ("Acepta terminos y condiciones");
+        terms.setBounds(150, 100, 50, 50);
+        panelFormulario.add(checkboxLabel);
+        panelFormulario.add(terms);
         add(panelFormulario);
         setVisible(true);
-        
+        terms.addActionListener(e -> {
+            if (terms.isSelected()) {
+                JOptionPane.showMessageDialog(null, "Datos guardados exitosamente.");
+            }
+        });
         botonGuardar.addActionListener(e -> {
             String nombre = campoNombre.getText();
             String email = campoEmail.getText();
@@ -65,7 +73,7 @@ public class VentanaPrincipal extends JFrame {
 
             try {
                 FileWriter writer = new FileWriter("datos_usuario.txt", true);
-                writer.write("Npmbre: " + nombre + ", Email: " + email + ", Telefono: " + telefono);
+                writer.write("Nombre: " + nombre + ", Email: " + email + ", Telefono: " + telefono + "\n");
                 writer.close();
                 JOptionPane.showMessageDialog(null, "Datos guardados exitosamente.");
             } catch (IOException ex) {
@@ -74,8 +82,9 @@ public class VentanaPrincipal extends JFrame {
         });
         panelFormulario.add(botonGuardar);
 
-        JCheckBox terms = new JCheckBox("Acepta terminos y condiciones");
-        add(terms);
+        
+        
+    
 
 
     }
