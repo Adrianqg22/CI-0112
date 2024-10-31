@@ -56,7 +56,7 @@ public class VentanaPrincipal extends JFrame {
             botonGuardar.setEnabled(terms.isSelected() && seleccionoUnTipo);
 
         });
-        
+
         tiposDeUsuarioComboBox.addActionListener(e ->{
             boolean seleccionoUnTipo = tiposDeUsuarioComboBox.getSelectedIndex() > 0;
             botonGuardar.setEnabled(terms.isSelected() && seleccionoUnTipo);
@@ -69,7 +69,8 @@ public class VentanaPrincipal extends JFrame {
             
             try {
                 FileWriter writer = new FileWriter("datos_usuario.txt", true);
-                writer.write("\nNombre: " + nombre + ", \nEmail: " + email + ", \nTelefono: " + telefono);
+                writer.write("Nombre: " + nombre + ", Email: " + email + ", Telefono: " + telefono + "\n");
+                writer.write("--------------------------------------------------------\n");
                 writer.close();
                 JOptionPane.showMessageDialog(null, "Datos guardados exitosamente.");
             } catch (IOException ex) {
