@@ -1,0 +1,60 @@
+public class ListaDoblementeEnlazada
+{
+
+    private Nodo inicio;
+    private Nodo fin;
+    public ListaDoblementeEnlazada()
+    {
+
+        inicio=fin=null;
+    }
+    public boolean Vacia(){
+        return inicio == null;
+    }
+    public void agregarFinal(int valor){
+        if(! Vacia()){
+            fin=new Nodo(valor, null, fin);
+            fin.nodoIzquierdo.nodoDerecho=fin;
+        }
+    }
+
+    public int sampleMethod(int y)
+    {
+        return x + y;
+    }
+
+}
+public class Nodo {
+    private int valor;
+    public Nodo nodoIzquierdo;
+    public Nodo nodoDerecho;
+
+    public Nodo(int valor){
+        this.valor = valor;
+        this.nodoIzquierdo = nodoIzquierdo;
+        this.nodoDerecho = nodoDerecho;
+    }
+                                                                                      
+    public int getValor(){
+        return this.valor;
+    }
+
+    public void setValor(int valor){
+        this.valor = valor;
+    }
+
+    public Nodo getNodoIzquierdo(){
+        return this.nodoIzquierdo;
+    }
+
+    public Nodo getNodoDerecho(){
+        return this.nodoDerecho;
+    }
+
+    public void insertar(int valor){
+        if (valor < this.valor){
+            if(this.nodoIzquierdo == null){
+                this.nodoIzquierdo = new Nodo(valor);
+            }
+    }
+}}
