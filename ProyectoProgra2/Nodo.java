@@ -1,3 +1,4 @@
+
 public class Nodo {
     private int valor;
     private Nodo nodoIzquierdo;
@@ -5,8 +6,8 @@ public class Nodo {
 
     public Nodo(int valor){
         this.valor = valor;
-        this.nodoIzquierdo = nodoIzquierdo;
-        this.nodoDerecho = nodoDerecho;
+        this.nodoIzquierdo = null;
+        this.nodoDerecho = null;
     }
 
     public int getValor(){
@@ -23,12 +24,5 @@ public class Nodo {
 
     public Nodo getNodoDerecho(){
         return this.nodoDerecho;
-    }
-
-    public void insertar(int valor){
-        if (valor < this.valor){
-            if(this.nodoIzquierdo == null){
-                this.nodoIzquierdo = new Nodo(valor);
-            }
     }
 }
