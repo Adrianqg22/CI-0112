@@ -1,6 +1,5 @@
 
 import javax.swing.*;
-import java.io.IOException;
 
 public class Interfaz extends JFrame{
     public Interfaz(){
@@ -28,12 +27,13 @@ public class Interfaz extends JFrame{
         panelInterfaz.setLayout(new BoxLayout(panelInterfaz, BoxLayout.Y_AXIS));
 
         JLabel estructuraLabel = new JLabel("Seleccione la estructura de datos que desee");
-        JLabel comoboBoxLabel = new JLabel("Estructura de datos");
-        String[] tipoDeEstructura =  {"Arból de busqueda binaria", "Lista doblemente enlazada"};
+        estructuraLabel.setBounds(150, 100, 50, 50);
+        String[] tipoDeEstructura =  {"Seleccione", "Arból de busqueda binaria", "Lista doblemente enlazada"};
         JComboBox<String> tipoDeEstructuraComboBox = new JComboBox<String>(tipoDeEstructura);
+        tipoDeEstructuraComboBox.setBounds(150, 100, 50, 50);
 
         panelInterfaz.add(estructuraLabel);
-        panelInterfaz.add(comoboBoxLabel);
         panelInterfaz.add(tipoDeEstructuraComboBox);
+        add(panelInterfaz);
     }
 }
