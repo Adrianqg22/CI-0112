@@ -30,4 +30,26 @@ public class ArbolBinario {
       return buscar(raiz.getNodoDerecho(), valor);
    }
 
+   public Nodo insertar(Nodo nodo, int valor){
+      //Caso en donde no existe un nodo creado anteriormente
+      if(raiz == null){
+         raiz = new Nodo(valor);
+      }
+      //Caso en que el valor sea menor que el del nodo actual
+      if(raiz.getValor() < valor){
+         raiz.setNodoIzquierdo(insertar(raiz.getNodoIzquierdo(), valor)); 
+      //Caso en el que el valor sea mayor que el del nodo actual
+      }else if(raiz.getValor() > valor){
+         raiz.setNodoDerecho(insertar(raiz.getNodoDerecho(), valor));
+      }
+      //Retorna el nuevo nodo insertado
+      return raiz;
+   }
+
+   public Nodo eliminar(Nodo nodo, int valor){
+      if(raiz == null){
+         
+      }
+   }
+
 }

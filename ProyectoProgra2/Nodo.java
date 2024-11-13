@@ -22,7 +22,15 @@ public class Nodo {
         return this.nodoIzquierdo;
     }
 
+    public void setNodoIzquierdo(Nodo nodoIzquierdo){
+        this.nodoIzquierdo = nodoIzquierdo;
+    }
+
     public Nodo getNodoDerecho(){
         return this.nodoDerecho;
+    }
+
+    public void setNodoDerecho(Nodo nodoDerecho){
+        this.nodoDerecho = nodoDerecho;
     }
 }
