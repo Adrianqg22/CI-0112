@@ -47,9 +47,34 @@ public class ArbolBinario {
    }
 
    public Nodo eliminar(Nodo nodo, int valor){
+      
       if(raiz == null){
-         
+         return raiz;
       }
-   }
 
+      if(raiz.getValor() > valor){
+         raiz.setNodoIzquierdo(eliminar(raiz.getNodoIzquierdo(), valor));
+      }else if (raiz.getValor() < valor) {
+          raiz.setNodoDerecho(eliminar(raiz.getNodoDerecho(), valor));
+      }else{
+         //Caso 1: Nodo sin hijpos o con un solo hijo
+         if(raiz.getNodoIzquierdo() == null){
+            return raiz.getNodoDerecho();
+         }else if(raiz.getNodoDerecho() == null){
+            return raiz.getNodoIzquierdo();
+         }
+         //Caso 2: Nodo con dos hijos
+         Nodo sucesor = encontrarMinimo(raiz.getNodoDerecho());
+         sucesor.setValor(raiz.getValor());
+         raiz.setNodoDerecho(eliminar(raiz.getNodoDerecho(), sucesor.getValor()));
+      }
+      return raiz;
+   }
+   //Metodo para encontrar el nodo mas pequeño 
+   public Nodo encontrarMinimo(Nodo nodo){
+      while (nodo.getNodoIzquierdo() != null) { 
+         nodo = nodo.getNodoIzquierdo(); 
+      }
+      return nodo;
+   }
 }
